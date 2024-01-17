@@ -11,7 +11,7 @@ migrate = Migrate(app, db)
 
 db.init_app(app)
 
-# ... (existing code)
+app.json.compact = False
 
 @app.route('/heroes', methods=['GET'])
 def get_all_heroes():
