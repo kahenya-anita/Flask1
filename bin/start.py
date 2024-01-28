@@ -15,4 +15,4 @@ if __name__ == "__main__":
     os.system("cd code-challenge && git commit --allow-empty -m \"Initial commit\"")
     print("Removing code-challenge.bundle")
 
-    os.system("rm code-challenge.bundle")
+    # os.system("rm code-challenge.bundle")

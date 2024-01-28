@@ -1,9 +1,16 @@
-from flask import Flask, jsonify, make_response, request, url_for, abort
+from dotenv import load_dotenv
+load_dotenv()
+
+from flask import Flask, jsonify, request
 from flask_migrate import Migrate
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from models import db, Hero, Power, HeroPower
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_url_path='',
+            static_folder='../client/build',
+            template_folder='../client/build'
+            )
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -11,7 +18,7 @@ migrate = Migrate(app, db)
 
 db.init_app(app)
 
-app.json.compact = False
+
 
 @app.route('/heroes', methods=['GET'])
 def get_all_heroes():
